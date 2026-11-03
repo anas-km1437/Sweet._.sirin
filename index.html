@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#190d24">
+<title>إلى سيرين، يا حلوة الحكاية ♡</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  color: #fff7fb;
+  font-family: Tahoma, Arial, sans-serif;
+  background:
+    radial-gradient(circle at 13% 18%, #a64d8666, transparent 30%),
+    radial-gradient(circle at 87% 82%, #e46d9b55, transparent 32%),
+    linear-gradient(135deg, #100b19, #29142f 54%, #461b38);
+  overflow-x: hidden;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .5;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 43px 43px;
+}
+
+.card {
+  width: min(100%, 660px);
+  position: relative;
+  text-align: center;
+  padding: clamp(27px, 6vw, 55px);
+  border: 1px solid #ffffff30;
+  border-radius: 30px;
+  background: #ffffff10;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 25px 90px #0008;
+}
+
+.top {
+  color: #ffd1e4;
+  font-size: 27px;
+  letter-spacing: 8px;
+}
+
+.eyebrow {
+  color: #f5b9d3;
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+h1 {
+  font-size: clamp(43px, 10vw, 72px);
+  margin: 10px 0;
+  color: #ffd7e8;
+  text-shadow: 0 0 25px #ff9fc966;
+}
+
+.lead {
+  color: #ffe6f0;
+  font-size: 18px;
+  line-height: 2.1;
+  margin: 16px auto 22px;
+}
+
+.quote {
+  padding: 22px 19px;
+  margin: 22px 0;
+  border-radius: 20px;
+  background: #ffffff10;
+  border: 1px solid #ffffff20;
+  color: #fff0f6;
+  line-height: 2.1;
+  min-height: 112px;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  transition: opacity .25s, transform .25s;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 23px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
+  font-family: inherit;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+.primary {
+  background: linear-gradient(100deg, #ffc0d9, #e6a4ef);
+  color: #32182e;
+  box-shadow: 0 8px 25px #e77eae33;
+}
+
+.secondary {
+  background: #ffffff16;
+  color: #fff;
+  border: 1px solid #ffffff35;
+}
+
+#surprise {
+  display: none;
+  margin-top: 20px;
+  padding: 17px;
+  border-radius: 18px;
+  background: #f9b7d51b;
+  color: #ffe1ed;
+  line-height: 2.15;
+}
+
+.signature {
+  margin-top: 26px;
+  color: #f1c8da;
+  font-size: 13px;
+}
+
+.heart {
+  display: inline-block;
+  color: #ffb6d2;
+  animation: beat 1.2s infinite;
+}
+
+.floating-heart {
+  position: fixed;
+  bottom: -35px;
+  color: #ffc4db;
+  pointer-events: none;
+  animation: floatUp 5s linear forwards;
+  opacity: .8;
+  z-index: 3;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.28); }
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<main class="card">
+
+  <div class="top">✦ ♡ ✦</div>
+
+  <div class="eyebrow">
+    إلى صاحبة الحضور اللطيف
+  </div>
+
+  <h1>سيرين</h1>
+
+  <p class="lead">
+    يا ألطف صدفة، ويا أحلى تفصيلة ممكن تزيّن يومًا عاديًا…<br>
+    فيكِ شيء يجعل الكلام الحلو يطلع من القلب بكل سهولة. 🌷
+  </p>
+
+  <div class="quote" id="message">
+    «يا سيرين، لو كان للورد أسلوب في الكلام،
+    أكيد كان اختار يحكي عنكِ.»
+  </div>
+
+  <div class="buttons">
+
+    <button class="primary" onclick="newMessage()">
+      دلّعيني بكلام حلو ♡
+    </button>
+
+    <button class="secondary" onclick="showSurprise()">
+      افتحي رسالتك الصغيرة 💌
+    </button>
+
+    <button class="secondary" onclick="makeHearts()">
+      مطر قلوب ✨
+    </button>
+
+  </div>
+
+  <div id="surprise">
+    سيرين، أتمنى تضحكي اليوم من قلبك،
+    وتكون أيامك خفيفة وجميلة مثلك.
+
+    وتذكّري دائمًا:
+    في هذا العالم المزدحم، وجودك بحد ذاته
+    تفصيلة تستحق كلمة حلوة.
+
+    <span class="heart">♡</span>
+  </div>
+
+  <div class="signature">
+    صُنعت خصيصًا لكِ… لأن اللطافة تليق باسمكِ ♡
+  </div>
+
+</main>
+
+<script>
+
+const messages = [
+
+"يا سيرين، لو كان للورد أسلوب في الكلام، أكيد كان اختار يحكي عنكِ.",
+
+"مش عارفة كيف بتعمليها، بس حتى اسمك لحاله فيه نغمة حلوة. ♡",
+
+"في ناس حلوة، وفي ناس وجودها يخلّي اليوم كله أحلى… وأنتِ من النوع الثاني.",
+
+"لو اللطافة لها عنوان، كان كتبنا اسمك عليه وحطّينا جنبه قلبًا ورديًا.",
+
+"أتمنى يومك يكون ناعمًا مثل نسمة ربيع، ومليان أسباب تخليك تبتسمي.",
+
+"يا حلوة التفاصيل، حتى الكلام العادي يصير ألطف لما يكون موجّهًا لكِ.",
+
+"أظن أن الورد لو شاف ابتسامتك، بيطلب منك تعلّميه كيف يكون جميلًا. 🌸",
+
+"فيه شيء مميز فيكِ… يخلي أبسط لحظة تستاهل تنحفظ في الذاكرة.",
+
+"لو كان بإمكاني أرسل لكِ شيئًا الآن، لأرسلت لكِ يومًا كاملًا من الفرح والراحة.",
+
+"سيرين، خذي هذه كجرعة لطافة: أنتِ تستحقين كلامًا جميلًا، اليوم وكل يوم. ♡"
+
+];
+
+let last = -1;
+
+function newMessage() {
+
+  let next;
+
+  do {
+    next = Math.floor(Math.random() * messages.length);
+  } while (next === last);
+
+  last = next;
+
+  const box = document.getElementById("message");
+
+  box.style.opacity = "0";
+  box.style.transform = "translateY(5px)";
+
+  setTimeout(() => {
+    box.textContent = "«" + messages[next] + "»";
+    box.style.opacity = "1";
+    box.style.transform = "translateY(0)";
+  }, 180);
+
+}
+
+function showSurprise() {
+
+  const box = document.getElementById("surprise");
+
+  box.style.display =
+    box.style.display === "block" ? "none" : "block";
+
+  if (box.style.display === "block") {
+    makeHearts(9);
+  }
+
+}
+
+function makeHearts(amount = 18) {
+
+  for (let i = 0; i < amount; i++) {
+
+    const heart = document.createElement("span");
+
+    heart.className = "floating-heart";
+
+    heart.textContent =
+      Math.random() > .5 ? "♡" : "♥";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+      (14 + Math.random() * 23) + "px";
+
+    heart.style.animationDuration =
+      (3.5 + Math.random() * 2.5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6500);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
